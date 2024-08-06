@@ -59,5 +59,4 @@ public class MeasurementService {
 				userRepository.save(user);
 
 		}
-
 }
