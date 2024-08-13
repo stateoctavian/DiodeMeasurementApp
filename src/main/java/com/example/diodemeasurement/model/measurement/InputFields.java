@@ -31,6 +31,11 @@ public class InputFields {
 		private int numberOfDiodes;
 		@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 		private Fitting fitting;
+		@OneToMany(mappedBy = "inputFields", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+		private List<SelectedTemperatures> selectedTemperatures;
+		@OneToMany(mappedBy = "inputFields", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+		private List<DiodeParams> diodeParams;
+
 
 
 }

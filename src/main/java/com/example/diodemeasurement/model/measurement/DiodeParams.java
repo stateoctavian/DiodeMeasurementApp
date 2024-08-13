@@ -23,4 +23,6 @@ public class DiodeParams {
 		private RsInitializationType rsInitializationType;
 		@ManyToOne(fetch = FetchType.LAZY)
 		private InputFields inputFields;
+		@OneToMany(mappedBy = "diodeParams", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+		private List<Rs> rsList;
 }
