@@ -19,5 +19,5 @@ public class DiodeParamsDTO {
 		private double phi;
 		private double p_eff;
 		private RsInitializationType rsInitializationType;
-		private List<Integer> rsList;
+		private List<Double> rsList;
 }

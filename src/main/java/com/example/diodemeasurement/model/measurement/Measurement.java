@@ -22,7 +22,7 @@ public class Measurement {
 		private InputFields inputFields;
 		@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 		private Result result;
-		@ManyToOne(fetch = FetchType.LAZY)
+		@ManyToOne(fetch = FetchType.EAGER)
 		private User user;
 
 

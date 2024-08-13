@@ -16,7 +16,7 @@ public class SelectedTemperatures {
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		private long id;
 		private int temperature;
-		@ManyToOne(fetch = FetchType.LAZY)
+		@ManyToOne(fetch = FetchType.EAGER)
 		private InputFields inputFields;
 
 }

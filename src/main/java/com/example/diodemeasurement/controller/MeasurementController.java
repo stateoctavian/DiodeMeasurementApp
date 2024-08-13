@@ -1,6 +1,8 @@
 package com.example.diodemeasurement.controller;
 
+import com.example.diodemeasurement.dto.measurement.MeasurementDTO;
 import com.example.diodemeasurement.dto.measurement.SaveMeasurementRequest;
+import com.example.diodemeasurement.model.measurement.Measurement;
 import com.example.diodemeasurement.service.measurement.MeasurementService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
@@ -13,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.security.Principal;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/measurements")
@@ -36,4 +39,26 @@ public class MeasurementController {
 				}
 
 		}
+
+		@DeleteMapping("/delete/{id}")
+		public ResponseEntity<Measurement> deleteMeasurement(@PathVariable long id,
+		                                                     @AuthenticationPrincipal Jwt principal) {
+				Measurement measurement = measurementService.deleteMeasurementById(id, principal);
+				if (measurement != null) {
+						return new ResponseEntity<>(measurement, HttpStatus.OK);
+				} else {
+						return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+				}
+		}
+
+		@GetMapping("/getMeasurements")
+		public ResponseEntity<List<MeasurementDTO>> getAllMeasurementsByUser(@AuthenticationPrincipal Jwt principal) {
+				List<MeasurementDTO> measurementDTOList = measurementService.getAllMeasurementsByUser(principal);
+				if (!measurementDTOList.isEmpty()) {
+						return new ResponseEntity<>(measurementDTOList, HttpStatus.OK);
+				} else {
+						return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+				}
+		}
+
 }

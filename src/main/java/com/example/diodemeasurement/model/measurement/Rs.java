@@ -15,8 +15,8 @@ public class Rs {
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		private long id;
 		private double resistance;
-		@ManyToOne(fetch = FetchType.LAZY)
+		@ManyToOne(fetch = FetchType.EAGER)
 		private DiodeParams diodeParams;
-		@ManyToOne(fetch = FetchType.LAZY)
+		@ManyToOne(fetch = FetchType.EAGER)
 		private Result result;
 }
